@@ -1,0 +1,10 @@
+BASIC REQUIREMENTS
+
+Prereqs: 1hr
+Design a normalized (multi-table) schema to hold data for your chatterbox-server: 30m
+Use npm to install (and save) the mysql module using npm install mysql --save so your chatterbox-server is able to talk to MySQL: 1 min
+Take a look at the tests in server/spec/server-spec.js: 30 minutes
+Customize the spec file with some of these details before it will be able to run: 1hr
+Put all the pieces together to create a persistent SQL-backed chatterbox-server: 1hr
+Have your server connect to MySQL, and use the database connection to store data as messages come in: 30m
+Manually test your server's persistence: 15m
