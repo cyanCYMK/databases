@@ -1,5 +1,7 @@
 var express = require('express');
 var db = require('./db');
+var cors = require('cors');
+
 
 // Middleware
 var morgan = require('morgan');
@@ -16,7 +18,11 @@ app.set("port", 3000);
 
 // Logging and parsing
 app.use(morgan('dev'));
+app.use(cors());
 app.use(parser.json());
+
+// LOOK IN HERE
+// we think we need to fix routes to get fetch to work
 
 // Set up our routes
 app.use("/classes", router);

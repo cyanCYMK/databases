@@ -2,7 +2,7 @@
  * for these tests to pass. */
 
 var mysql = require('mysql');
-var request = require("request"); // You might need to npm install the request module!
+var request = require("request");
 var expect = require('../../node_modules/chai/chai').expect;
 
 describe("Persistent Node Chat Server", function() {
@@ -16,7 +16,8 @@ describe("Persistent Node Chat Server", function() {
     });
     dbConnection.connect();
 
-       var tablename = ""; // TODO: fill this out
+      var tablename = "users";
+
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
@@ -47,7 +48,13 @@ describe("Persistent Node Chat Server", function() {
 
         // TODO: You might have to change this test to get all the data from
         // your message table, since this is schema-dependent.
-        var queryString = "SELECT * FROM messages";
+
+        // Find valjean
+        // var valjean;
+        // dbConnection.query("queryString", queryArgs, function(err, results) {
+        //
+        // pass his user ID to query args
+        var queryString = "SELECT message_text FROM messages WHERE id_users = ?";
         var queryArgs = [];
 
         dbConnection.query(queryString, queryArgs, function(err, results) {

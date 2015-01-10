@@ -13,6 +13,7 @@ this file and include it in basic-server.js so that it actually works.
 **************************************************************/
 var fs = require('fs');
 var messages = {results: []};
+var mysql = require('mysql');
 var validPaths = {
   '/classes/room1/': true,
   '/classes/messages/': true,
@@ -94,11 +95,35 @@ exports.requestHandler = function(request, response) {
 
     request.on('end', function(){
       string = ',' + string;
-      fs.appendFile('logs/messages.txt', string, function(err){
-        if (err){
-          console.log ('there is a problem!!!!', err)
-        }
+      var dbConnection = mysql.createConnection({
+        user: "root",
+        password: "",
+        database: "chat"
       });
+      dbConnection.connect();
+      var tablename = 'users';
+      //INSERT INTO `users` (`id`,`name`) VALUES ('0001','Devin');
+      // check if user is in user's table
+      var queryString = ''
+      if (dbConnection.query()) {
+        // if so, add, if not, continue
+          // save userID number to variable
+      }
+      // insert new line in messages table
+        // use userID, string as message, roomname
+
+
+      dbConnection.query(queryString, queryArgs, function(err, results) {
+
+      });
+      dbConnection.end();
+
+      // fs.appendFile('logs/messages.txt', string, function(err){
+      //   if (err){
+      //     console.log ('there is a problem!!!!', err)
+      //   }
+      // });
+
       // messages.results.push(JSON.parse(string));
       response.end(JSON.stringify('post success'));
     });

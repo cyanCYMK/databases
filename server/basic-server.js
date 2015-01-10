@@ -3,7 +3,7 @@ var http = require("http");
 var handler = require("./request-handler.js");
 var handleRequest = handler.requestHandler;
 
-// Every server needs to listen on a port with a unique number. The
+// Every server needs to list/en on a port with a unique number. The
 // standard port for HTTP servers is port 80, but that port is
 // normally already claimed by another server and/or not accessible
 // so we'll use a standard testing port like 3000, other common development
